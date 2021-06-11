@@ -1,25 +1,9 @@
-const mongoose = require('mongoose');
 const indexedDB =
 window.indexedDB ||
 window.mozIndexedDB ||
 window.webkitIndexedDB ||
 window.msIndexedDB ||
 window.shimIndexedDB;
-
-const url = `mongodb+srv://acombs801:<Dutton@10>@fitnesstracker.ryjbj.mongodb.net/budget?retryWrites=true&w=majority`;
-
-const connectionParams={
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true 
-}
-mongoose.connect(url,connectionParams)
-    .then( () => {
-        console.log('Connected to database ')
-    })
-    .catch( (err) => {
-        console.error(`Error connecting to the database. \n${err}`);
-    })
 
 let db;
 const request = indexedDB.open("budget", 1);
