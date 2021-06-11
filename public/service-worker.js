@@ -23,8 +23,8 @@ self.addEventListener("install", function(event) {
 });
 
 // activate
-self.addEventListener("activate", function(evt) {
-  evt.waitUntil(
+self.addEventListener("activate", function(event) {
+  event.waitUntil(
     caches.keys().then(keyList => {
       return Promise.all(
         keyList.map(key => {
@@ -64,10 +64,10 @@ self.addEventListener("fetch", function(event) {
     return;
   }
 
-  evt.respondWith(
+  event.respondWith(
     caches.open(CACHE_NAME).then(cache => {
-      return cache.match(evt.request).then(response => {
-        return response || fetch(evt.request);
+      return cache.match(event.request).then(response => {
+        return response || fetch(event.request);
       });
     })
   );
