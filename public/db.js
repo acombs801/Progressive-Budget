@@ -7,7 +7,7 @@ request.onupgradeneeded = event => {
   db.createObjectStore("pending", { autoIncrement: true });
 }
 
-request.onsuccess = function(event) {
+request.onsuccess = function (event) {
   db = event.target.result;
 
   // check if app is online before reading from db

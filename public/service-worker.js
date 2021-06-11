@@ -10,7 +10,7 @@ const FILES_TO_CACHE = [
 const CACHE_NAME = "static-cache-v2";
 const DATA_CACHE_NAME = "data-cache-v1";
 
-self.addEventListener("install", function(evt) {
+self.addEventListener("install", function (evt) {
   // Perform install steps
   evt.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
@@ -23,7 +23,7 @@ self.addEventListener("install", function(evt) {
 });
 
 // activate
-self.addEventListener("activate", function(evt) {
+self.addEventListener("activate", function (evt) {
   evt.waitUntil(
     caches.keys().then(keyList => {
       return Promise.all(
@@ -40,7 +40,7 @@ self.addEventListener("activate", function(evt) {
   self.clients.claim();
 });
 
-self.addEventListener("fetch", function(evt) {
+self.addEventListener("fetch", function (evt) {
   // cache all get requests to /api routes
   if (evt.request.url.includes("/api/")) {
     evt.respondWith(
